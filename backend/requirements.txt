@@ -1,6 +1,6 @@
 fastapi==0.109.2
 uvicorn==0.27.1
-supabase==2.3.4
+supabase
 docker==7.0.0
 pydantic==2.6.1
 python-multipart==0.0.9
