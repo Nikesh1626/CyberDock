@@ -1,4 +1,7 @@
 import os
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 class Settings:
     PROJECT_NAME: str = "CyberDock API"
