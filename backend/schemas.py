@@ -1,15 +1,16 @@
 from pydantic import BaseModel, HttpUrl
-from typing import Optional, List
+from typing import Optional, List, Any
 from datetime import datetime
 
 class ProjectBase(BaseModel):
     name: str
     description: Optional[str] = None
     source_type: str
-    source_url: Optional[HttpUrl] = None
+    source_url: Optional[str] = None
 
 class ProjectResponse(ProjectBase):
     id: str
+    user_id: Optional[str] = None
     created_at: datetime
 
     class Config:
@@ -29,9 +30,11 @@ class ScanResponse(BaseModel):
 
 class VulnerabilityResponse(BaseModel):
     id: str
+    scan_id: Optional[str] = None
     cve_id: str
     severity: str
-    package_name: str
+    package: Optional[str] = None
+    package_name: Optional[str] = None
     installed_version: Optional[str] = None
     fixed_version: Optional[str] = None
     source_tool: str
@@ -41,6 +44,7 @@ class VulnerabilityResponse(BaseModel):
 
 class RuntimeEventResponse(BaseModel):
     id: str
+    scan_id: Optional[str] = None
     timestamp: datetime
     event_type: str
     severity: str
@@ -48,3 +52,11 @@ class RuntimeEventResponse(BaseModel):
 
     class Config:
         from_attributes = True
+
+class DashboardSummaryResponse(BaseModel):
+    total_projects: int
+    total_scans: int
+    critical_issues: int
+    completed_scans: int
+    severity_breakdown: List[dict]
+    recent_scans: List[dict]

@@ -10,3 +10,6 @@ __pycache__/
 .pytest_cache/
 *.log
 .DS_Store
+workspaces/
+uploads/
+debug_*.py
