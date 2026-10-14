@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
 import Projects from './pages/Projects';
 import NewProject from './pages/NewProject';
+import ProjectDetails from './pages/ProjectDetails';
+import ScanDetails from './pages/ScanDetails';
 import './App.css';
 
 // Protected Route Wrapper
@@ -31,6 +33,8 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/new" element={<NewProject />} />
+            <Route path="projects/:id" element={<ProjectDetails />} />
+            <Route path="scans/:id" element={<ScanDetails />} />
           </Route>
         </Routes>
       </Router>
